@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--
+    导入外部的配置文件
+    <context:property-placeholder location="classpath:person.properties"/>
+-->
+
+<!--
+    包扫描,只要标注了@service、@controller、@Repository、@Component
+    use-default-filters="false": 禁用掉默认的规则,因为默认的规则就是扫描所有的,这样只包含才能生效
+    <context:component-scan base-package="com.atguigu" use-default-filters="false"></context:component-scan>
+-->
+
+<!--使用xml的方式注册bean
+    scope: 指定作用范围
+    init-method=""和destroy-method="": 使用xml的方式对当前bean进行初始化和销毁方法
+    <bean id="person" class="com.atguigu.bean.Person" scope="prototype" init-method="" destroy-method="">
+        <property name="name" value="Jerry"></property>
+        <property name="age" value="23"></property>
+    </bean>
+-->
+
+<!--
+    开启注解版的切面功能
+    <aop:aspectj-autoproxy/>
+-->
+
+<!--
+    开启基于注解的事务支持
+    <tx:annotation-driven/>
+-->
+</beans>
