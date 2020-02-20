@@ -22,13 +22,13 @@ import org.springframework.context.annotation.Primary;
  *              可以使用 @Autowired(required = false) 不会强制装配,这样就不会报错,getBean得到的对象的属性值为null
  *              举例: BookService [bookDao = null]
  *      5> @Primary,让Spring自动装配的时候,默认使用装配首选的bean,也可以继续使用 @Qualifier 指定需要装配的bean的名字
- *       @Service
- *       public class BookService {
+ *         @Service
+ *         public class BookService {
  *             @Qualifier("bookDao")
  *             //@Autowired(required = false)
  *             @Autowired
  *             public BookDao bookDao02;
- *      }
+ *         }
  *
  * 2、Spring还支持使用 @Resource(JSR250) 和 @Inject(JSR330)[Java规范的注解]
  *      1> @Resource: 可以和Autowired一样实现自动装配功能,默认是按照组件名称进行装配的,

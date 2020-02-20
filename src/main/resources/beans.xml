@@ -7,7 +7,14 @@
 
 <!--
     导入外部的配置文件
-    <context:property-placeholder location="classpath:person.properties"/>
+    <context:property-placeholder location="classpath:dbConfig.properties"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${db.user}"></property>
+        <property name="password" value="${db.password}"></property>
+        <property name="driverClass" value="${db.driverClass}"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/practice"></property>
+    </bean>
 -->
 
 <!--
@@ -16,12 +23,53 @@
     <context:component-scan base-package="com.atguigu" use-default-filters="false"></context:component-scan>
 -->
 
-<!--使用xml的方式注册bean
+<!--
+    使用xml的方式注册bean
+    class: Bean的全类名,通过反射的方式在IOC容器中创建Bean,所以要求Bean中必须y有无参数的构造器
+    id: 标识容器中的Bean,id唯一表示
     scope: 指定作用范围
-    init-method=""和destroy-method="": 使用xml的方式对当前bean进行初始化和销毁方法
+    init-method="" 和 destroy-method="": 使用xml的方式对当前bean进行初始化和销毁方法
     <bean id="person" class="com.atguigu.bean.Person" scope="prototype" init-method="" destroy-method="">
         <property name="name" value="Jerry"></property>
         <property name="age" value="23"></property>
+-->
+        <!--
+        如果想属性为null ===> <null/>
+        <constructor-arg><null/></constructor-arg>
+        -->
+        <!--
+        内部bean,这个需要在Person.class中引用Car.class(private Car car;)
+        <property name="car">
+            <bean class="com.atguigu.bean.Car">
+                <constructor-arg value="BMW"/>
+            </bean>
+        </property>
+        -->
+    <!--</bean>-->
+
+
+<!--
+    通过构造器方法来配置bean的属性
+    constructor-arg: 按照属性顺序进行配置
+    index: 表示属性的顺序下标
+
+    <bean id="person" class="com.atguigu.bean.Person">
+        <constructor-arg value="Jerry" index="0"/>
+        <constructor-arg value="23" index="1"/>
+        <constructor-arg value="small Jerry" index="2"/>
+    </bean>
+-->
+
+<!--
+    使用构造器注入属性值可以指定参数的位置和参数的类型
+    作用: 用来区分重载构造器
+    type: 也可以使用类型进行区分
+    <bean id="person" class="com.atguigu.bean.Person">
+        <constructor-arg value="Jerry" type="java.lang.String"/>
+        <constructor-arg value="23" type="int"/>
+        <constructor-arg type="java.lang.String">
+            <value>small Jerry</value>
+        </constructor-arg>
     </bean>
 -->
 
