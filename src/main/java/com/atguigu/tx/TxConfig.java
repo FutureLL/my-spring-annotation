@@ -19,7 +19,7 @@ import java.beans.PropertyVetoException;
  *      1、导入相关依赖(数据源,数据驱动,SpringJDBC模块)
  *      2、配置数据源,JdbcTemplate(Spring提供的简化数据库操作的工具)操作数据
  *      3、给方法上标注@Transactional,表示当前方法是一个事务方法
- *      4、@EnableTransactionManagement开启基于注解的事务管理功能
+ *      4、@EnableTransactionManagement 开启基于注解的事务管理功能
  *      5、配置事务管理器来管理事务
  *          @Bean
  *          public PlatformTransactionManager transactionManager() throws PropertyVetoException {
@@ -50,7 +50,7 @@ public class TxConfig {
         return jdbcTemplate;
     }
 
-    //注册事务管理器在容器中
+    // 注册事务管理器在容器中
     @Bean
     public PlatformTransactionManager transactionManager() throws PropertyVetoException {
         return new DataSourceTransactionManager(dataSource());

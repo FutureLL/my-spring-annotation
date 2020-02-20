@@ -16,7 +16,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * AOP【动态代理】:
  *      指在程序运行期间动态的将某段代码切入到指定方法指定的位置进行运行的编程方式
  *
- * 1、导入Aop模块,Spring对Aop也做了简化操作,只要用到几个注解就可以了
+ * 1、导入Aop模块,Spring对Aop也做了简化操作,只要用到几个注解就可以了(spring-aspects)
  * 2、定义一个业务逻辑类(MathCalculator),在业务逻辑运行的时候将日志进行打印(方法之前,方法运行结束,方法运行异常,xxxx)
  * 3、定义一个日志切面类(LogAspects),切面里面的类需要动态感知(MathCalculator.div)运行到哪里,然后执行
  *    通知方法:
@@ -35,8 +35,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  *    1> 将业务逻辑组件和切面类都加入到容器中,并且要告诉Spring那个是切面类(@Aspect)
  *    2> 在切面类上每个通知方法都要标注通知注解,告诉Spring何时何地运行(切入点表达式)
  *    3> 开启基于注解的Aop模式: @EnableAspectJAutoProxy
- *
- *
  *
  */
 

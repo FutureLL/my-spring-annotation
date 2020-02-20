@@ -11,6 +11,7 @@ public class MyImportSelector implements ImportSelector {
      *
      * AnnotationMetadata: 当前标注@Import注解的类的所有注解信息
      */
+    @Override
     public String[] selectImports(AnnotationMetadata annotationMetadata) {
         //不要返回null,返回空数组
         return new String[]{"com.atguigu.bean.Blue","com.atguigu.bean.Yellow"};

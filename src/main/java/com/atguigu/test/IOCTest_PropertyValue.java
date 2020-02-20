@@ -1,7 +1,6 @@
 package com.atguigu.test;
 
 import com.atguigu.bean.Person;
-import com.atguigu.config.MainConfigOfLifeCycle;
 import com.atguigu.config.MainConfigOfPropertyValues;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,6 +28,7 @@ public class IOCTest_PropertyValue {
         System.out.println(person);
         System.out.println("==================");
         ConfigurableEnvironment environment = context.getEnvironment();
+        // "person.nickName": 配置文件中的 key
         String property = environment.getProperty("person.nickName");
         System.out.println(property);
 

@@ -4,7 +4,6 @@ import com.atguigu.bean.Car;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 /**
  * bean的生命周期:
@@ -26,13 +25,13 @@ import org.springframework.context.annotation.Scope;
  *
  *
  *
- *      1、指定初始化和销毁方法
- *          通过@Bean注解的方式指定init-method和destroy-method
- *      2、通过Bean实现InitializingBean(定义初始化逻辑),DisposableBean(定义销毁逻辑)
- *      3、可以使用JSR250规范定义的注解:
+ *      1、指定初始化和销毁方法                                                       ===> Car.class
+ *          通过@Bean注解的方式指定 init-method(初始化) 和 destroy-method(销毁)
+ *      2、通过Bean实现 InitializingBean(定义初始化逻辑),DisposableBean(定义销毁逻辑)  ===> Cat.class
+ *      3、可以使用JSR250规范定义的注解:                                              ===> Dog.class
  *          @PostConstruct: 在bean创建完成并且属性赋值完成,来执行初始化方法
  *          @PreDestroy: 在容器销毁bean之前通知我们进行清理工作
- *      4、BeanPostProcessor【interface】: bean的后置处理器
+ *      4、BeanPostProcessor【interface】: bean的后置处理器                           ===> MyBeanPostProcessor.class
  *          在bean初始化前后进行一些处理工作
  *          postProcessBeforeInitialization: 在初始化之前工作
  *          postProcessAfterInitialization: 在初始化之后工作
@@ -42,7 +41,7 @@ import org.springframework.context.annotation.Scope;
 public class MainConfigOfLifeCycle {
 
     //@Scope("prototype")
-    @Bean(initMethod = "init",destroyMethod = "destroy")
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     public Car car(){
         return new Car();
     }

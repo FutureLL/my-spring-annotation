@@ -1,6 +1,5 @@
 package com.atguigu.aop;
 
-import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 
@@ -40,23 +39,23 @@ public class LogAspects {
     @Before("pointCut()")
     public void logStart(JoinPoint joinPoint){
         //获取参数列表
-        Object[] args = joinPoint.getArgs();
+        Object[] argsList = joinPoint.getArgs();
         //joinPoint.getSignature().getName(): 获得方法名
-        System.out.println(joinPoint.getSignature().getName() + "方法运行...@Before: 参数列表是:{ " + Arrays.asList(args) + " }");
+        System.out.println(joinPoint.getSignature().getName() + " 方法运行...@Before: 参数列表是:{ " + Arrays.asList(argsList) + " }");
     }
 
     @After("pointCut()")
     public void logEnd(JoinPoint joinPoint){
-        System.out.println(joinPoint.getSignature().getName() + "方法结束...@After");
+        System.out.println(joinPoint.getSignature().getName() + " 方法结束...@After");
     }
 
     @AfterReturning(value = "com.atguigu.aop.LogAspects.pointCut()", returning = "result")
     public void logReturn(JoinPoint joinPoint,Object result){
-        System.out.println(joinPoint.getSignature().getName() + "方法正常返回...@AfterReturning: 计算结果:{ " + result + " }");
+        System.out.println(joinPoint.getSignature().getName() + " 方法正常返回...@AfterReturning: 计算结果:{ " + result + " }");
     }
 
     @AfterThrowing(value = "pointCut()", throwing = "exception")
     public void logException(JoinPoint joinPoint,Exception exception){
-        System.out.println(joinPoint.getSignature().getName() + "方法异常...异常信息:{" + exception + "}");
+        System.out.println(joinPoint.getSignature().getName() + " 方法异常...异常信息:{" + exception + "}");
     }
 }

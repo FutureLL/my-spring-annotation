@@ -24,8 +24,8 @@ public class BookDao {
 
     @Override
     public String toString() {
-        return "BookDao{" +
-                "lable='" + lable + '\'' +
-                '}';
+        return "BookDao [" +
+                "lable = '" + lable + '\'' +
+                ']';
     }
 }

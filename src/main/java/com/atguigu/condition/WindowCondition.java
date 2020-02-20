@@ -14,6 +14,7 @@ public class WindowCondition implements Condition {
      * ConditionContext: 判断条件能使用的上下文环境
      * AnnotatedTypeMetadata: 当前标注了@Conditional注解的注释信息
      */
+    @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         //是否为Window系统
         //1、能获取到Ioc使用的BeanFactory

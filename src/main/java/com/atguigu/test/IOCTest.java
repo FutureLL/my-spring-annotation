@@ -22,7 +22,9 @@ public class IOCTest {
 
     @Test
     public void test01(){
+        // 指定主配置类
         ApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
+        // 查看容器中有哪些Bean
         String[] beanDefinitionNames = context.getBeanDefinitionNames();
         for (String name : beanDefinitionNames){
             System.out.println(name);
@@ -42,7 +44,7 @@ public class IOCTest {
         Person person1 = (Person) context.getBean("person2");
         Person person2 = (Person) context.getBean("person2");
         System.out.println(person1);
-        //单实例的,输出为true
+        //单实例的,输出为 true
         System.out.println(person1 == person2);
     }
 

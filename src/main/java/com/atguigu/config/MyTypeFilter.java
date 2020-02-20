@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * @author Mr.Li
  * @version 1.0
- * @Description:
+ * @Description: 过滤规则
  * @Modified By:
  * @date 2019/11/30 19:04
  */
@@ -20,7 +20,9 @@ public class MyTypeFilter implements TypeFilter {
     /**
      * metadataReader: 读取到的当前正在扫描的类的信息
      * metadataReaderFactory: 可以获取到其他任何类信息的
+     * @return 如果是true表示匹配成功,否则失败
      */
+    @Override
     public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
         //获取当前类注解的信息
         AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
