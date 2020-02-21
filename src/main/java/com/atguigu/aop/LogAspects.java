@@ -3,6 +3,7 @@ package com.atguigu.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 
 import java.util.Arrays;
 
@@ -10,8 +11,10 @@ import java.util.Arrays;
  * 切面类
  *
  * @Aspect: 告诉Spring当前类是一个切面类
+ * @Order: 使用@Order注解指定切面的优先级,值越小优先级越高
  */
 
+@Order(value = 1)
 @Aspect
 public class LogAspects {
 
@@ -38,7 +41,7 @@ public class LogAspects {
      * <p>
      * 注意: JoinPoint必须出现在参数的第一位,否则Spring是无法识别的
      */
-    @Before("pointCut()")
+    @Before(value = "pointCut()")
     public void logStart(JoinPoint joinPoint) {
         //获取参数列表
         Object[] argsList = joinPoint.getArgs();
