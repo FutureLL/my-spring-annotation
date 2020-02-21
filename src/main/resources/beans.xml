@@ -5,6 +5,9 @@
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!-- 使用AspectJ注解起作用: 自动为配置的类生成代理对象 -->
+    <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
 <!--
     导入外部的配置文件
     <context:property-placeholder location="classpath:dbConfig.properties"/>
