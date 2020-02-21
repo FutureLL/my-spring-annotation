@@ -40,6 +40,11 @@ public class LogAspects {
      * @Before: 切入时机, 在目标方法之前切入
      * <p>
      * 注意: JoinPoint必须出现在参数的第一位,否则Spring是无法识别的
+     *
+     * 如果pointCut()这个方法与logStart()不在一个包下,那么需要写全路径
+     *     举例: com.atguigu.aop.LogAspects.pointCut()
+     * 如果是同包不同代码下,那么需要如下方式
+     *     举例: LogAspects.pointCut()
      */
     @Before(value = "pointCut()")
     public void logStart(JoinPoint joinPoint) {
